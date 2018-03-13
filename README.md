@@ -2,17 +2,44 @@
 
 > A API project whit ExpressJS, GrahpQL and Socket.io
 
-Docker
+Docker - Run a image alpin
 
-    docker run -it -v /var/www:/var/www --name express -p 80:8080 alpine
+    docker run -it -v /var/www:/var/www -p 4000:4000 --name express alpine
 
-In container
+In container - Instalation
 
     apk add --update --upgrade git nodejs nodejs-npm && npm install -g yarn express-generator
+
+    npm install -g nodemon
     
 Create a start project
     
+    mkdir api-express || cd api-express
+
+    npm init
+
     npm install express express-graphql graphql --save
+
+Mongoose for connect to MongoDB
+
+    npm i -S mongoose
+
+Run api server
+
+    nodemon server.js
+
+Docker MongoDB
+
+    docker run  -p 27017:27017 --name mongo -d mongo --auth
+
+Create user in db
+
+    docker exec -it mongo mongo admin
+
+    db.createUser({ user: 'admin', pwd: '123456', roles: [ { role: "userAdminAnyDatabase", db: "admin" } ] });
+
+Connect to db
+    docker run -it --rm --link some-mongo:mongo mongo mongo -u jsmith -p some-initial-password --authenticationDatabase admin some-mongo/some-db
 
 ## Build Setup
 
