@@ -8,25 +8,15 @@ Docker - Run a image alpin
 
 In container - Instalation
 
-    apk add --update --upgrade git nodejs nodejs-npm && npm install -g yarn express-generator
+    apk add --update --upgrade git nodejs nodejs-npm && npm i -g nodemon express-generator
 
-    npm install -g nodemon
-    
-Create a start project
+To create a start project
     
     mkdir api-express || cd api-express
 
     npm init
 
-    npm install express express-graphql graphql --save
-
-Mongoose for connect to MongoDB
-
-    npm i -S mongoose
-
-Run api server
-
-    nodemon server.js
+    npm i express express-graphql graphql mongoose --save
 
 Docker MongoDB
 
@@ -45,25 +35,10 @@ Connect to db
 
 ``` bash
 # install dependencies
-npm install
+npm i
 
 # serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+nodemon index.js
 ```
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
