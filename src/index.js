@@ -3,20 +3,11 @@ const express = require('express')
 const graphqlHTTP = require('express-graphql')
 const schema = require('./schema')
 
-const index = require('./routes/index');
-const users = require('./routes/users');
-const graphql = require('./routes/graphql');
-
 var app = express()
-
-// Routes
-app.use('/', index);
-app.use('/users', users);
-// app.use('/graphql', graphql);
 
 // Graphql
 const isDev = process.env.NODE_ENV !== 'production'
-app.use('/graphql', graphqlHTTP({
+app.use('/', graphqlHTTP({
   schema: schema,
   rootValue: {hello: () => {return 'Hello world!'}},
   graphiql: isDev,
