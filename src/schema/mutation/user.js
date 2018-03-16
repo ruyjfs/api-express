@@ -1,7 +1,7 @@
 const {GraphQLObjectType, GraphQLInt, GraphQLList, GraphQLNonNull, GraphQLString} = require('graphql/type')
 const model = require('../model/user')
-// const db = require('../../db')
-// const collection = db.collection('user')
+const db = require('../../db')
+const collection = db.collection('user')
 
 module.exports = {
   type: new GraphQLObjectType({
@@ -18,9 +18,9 @@ module.exports = {
           date: {name: 'date', type: new GraphQLNonNull(GraphQLString)},
         },
         resolve: (parentValues, args) => {
-          // const res = collection.insert(args)
+          const res = collection.insert(collection)
           // console.info(res)
-          // return prepare(collection.findOne({_id: res.insertedIds[1]}))
+          return prepare(collection.findOne({_id: res.insertedIds[1]}))
         }
       },
       delete: {

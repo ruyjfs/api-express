@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MONGO_URL = 'mongodb://172.17.0.2:27017/local'
+const MONGO_URL = 'mongodb://172.17.0.3:27017/local'
 mongoose.connect(MONGO_URL)
 const db = mongoose.connection;
 db.on('error', ()=> {console.log( '---FAILED to connect to mongoose')})

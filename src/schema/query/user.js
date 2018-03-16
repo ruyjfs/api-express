@@ -3,20 +3,13 @@ const {
   GraphQLInt,
 } = require('graphql/type')
 const model = require('../model/user')
-// const db = require('../../db')
+const db = require('../../db')
+const collection = db.collection('user')
 
 module.exports = {
   type: new GraphQLList(model),
-  args: {
-    id: {name: 'id', type: GraphQLInt}
-  },
+  args: {id: {name: 'id', type: GraphQLInt}},
   resolve: (parentValues, args) => {
-    // console.info(db)
-    console.info(args)
-    return [
-      {id:1, name: "Ryu", username: "ryu", email:"", age: 28},
-      {id:1, name: "Ken", username: "ken", email:"", age: 28},
-      {id:1, name: "Shunli", username: "shunli", email:"", age: 28},
-    ]
+    return collection.find(args)
   }
 }
